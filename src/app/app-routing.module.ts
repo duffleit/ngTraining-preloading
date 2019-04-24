@@ -19,6 +19,10 @@ const routes: Routes = [
     component: CheckoutComponent
   },
   {
+    path: 'search',
+    loadChildren: './search/search.module#SearchModule'
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
