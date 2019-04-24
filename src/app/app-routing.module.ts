@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { OrdersComponent } from './orders/orders/orders.component';
-import { CheckoutComponent } from './checkout/checkout/checkout.component';
+import { CustomPreloadingStrategy } from './custom-preload-strategy';
 
 const routes: Routes = [
   {
@@ -11,7 +10,8 @@ const routes: Routes = [
   },
   {
     path: 'orders',
-    loadChildren: './orders/orders.module#OrdersModule'
+    loadChildren: './orders/orders.module#OrdersModule',
+    data: { preload: true }
   },
   {
     path: 'checkout',
@@ -19,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    loadChildren: './search/search.module#SearchModule'
+    loadChildren: './search/search.module#SearchModule',
+    data: { preload: true }
   },
   {
     path: '',
@@ -29,10 +30,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules
-
-  })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: CustomPreloadingStrategy
+    })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
