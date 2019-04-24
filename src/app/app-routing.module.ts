@@ -12,7 +12,6 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent,
-    data: { preload: true }
   },
   {
     path: 'checkout',
