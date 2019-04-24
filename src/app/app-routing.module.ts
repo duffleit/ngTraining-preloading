@@ -11,12 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'orders',
-    component: OrdersComponent,
-    data: { preload: true }
+    loadChildren: './orders/orders.module#OrdersModule'
   },
   {
     path: 'checkout',
-    component: CheckoutComponent
+    loadChildren: './checkout/checkout.module#CheckoutModule'
   },
   {
     path: 'search',
